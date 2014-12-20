@@ -1,4 +1,4 @@
-/*globals angular, moment, $, console*/
+/*globals angular, $, console*/
 
 angular.module('demo.demoController', [])
   .controller('demoController', [
@@ -6,8 +6,6 @@ angular.module('demo.demoController', [])
     function ($scope) {
       'use strict';
       $scope.controllerName = 'demoController';
-
-      moment.locale('en');
 
       $scope.data = {
         guardians: [
@@ -37,11 +35,11 @@ angular.module('demo.demoController', [])
       };
 
       $scope.getLocale = function () {
-        return moment.locale();
+        return Date.getLocale().code;
       };
 
       $scope.setLocale = function (newLocale) {
-        moment.locale(newLocale);
+        Date.setLocale(newLocale);
       };
 
 
