@@ -2,6 +2,7 @@
 angular.module('demo',
   [
     'demo.demoController',
+    'ui.bootstrap',
     'ui.bootstrap.datetimepicker'
   ])
   .config([

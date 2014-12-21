@@ -24,16 +24,6 @@ angular.module('demo.demoController', [])
         $scope.data.checked = false;
       };
 
-      $scope.inputOnTimeSet = function (newDate) {
-        // If you are not using jQuery or bootstrap.js,
-        // this will throw an error.
-        // However, can write this function to take any
-        // action necessary once the user has selected a
-        // date/time using the picker
-        console.log(newDate);
-        $('#dropdown3').dropdown('toggle');
-      };
-
       $scope.getLocale = function () {
         return Date.getLocale().code;
       };
@@ -65,6 +55,12 @@ angular.module('demo.demoController', [])
 
       $scope.configFunction = function configFunction() {
         return {startView: 'month'};
+      };
+
+      $scope.dropdownStates = {};
+
+      $scope.closeDropdown = function(key) {
+        $scope.dropdownStates[key] = false;
       };
     }
   ]);

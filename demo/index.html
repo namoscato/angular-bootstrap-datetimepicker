@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="src/css/datetimepicker.css">
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script type="text/javascript" src="bower_components/sugar/release/sugar-full.development.js"></script>
     <script type="text/javascript" src="demo/demo-app.js"></script>
     <script type="text/javascript" src="demo/demo-controller.js"></script>
@@ -47,20 +47,21 @@
 
         <p><code>dropdownSelector: '#dropdown1'</code> to toggle the dropdown.</p>
 
-        <div class="well">
+        <div class="btn-group" class="well">
             <p>Formatted Date: {{ data.dateDropDownInputNoFormatting | date:'medium' }}</p>
 
-            <div class="dropdown">
-                <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#"
-                   href="#">
+            <div class="dropdown" data-dropdown data-is-open="dropdownStates.dateDropDownInputNoFormatting">
+                <a data-dropdown-toggle role="button">
                     <div class="input-group">
                         <input type="text" class="form-control" data-ng-model="data.dateDropDownInputNoFormatting">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                     </div>
                 </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker data-ng-model="data.dateDropDownInputNoFormatting"
-                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown1' }"></datetimepicker>
+                <ul class="dropdown-menu" role="menu">
+                    <datetimepicker
+                        data-ng-model="data.dateDropDownInputNoFormatting"
+                        data-on-set-time="closeDropdown('dateDropDownInputNoFormatting')">
+                    </datetimepicker>
                 </ul>
             </div>
         </div>
@@ -78,17 +79,18 @@
         <div class="well">
             <p>Formatted Date: {{ data.dateDropDownInput | date:'medium' }}</p>
 
-            <div class="dropdown">
-                <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#"
-                   href="#">
+            <div class="dropdown" data-dropdown data-is-open="dropdownStates.dateDropDownInput">
+                <a data-dropdown-toggle role="button">
                     <div class="input-group">
                         <input type="text" class="form-control" data-ng-model="data.dateDropDownInput">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                     </div>
                 </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker data-ng-model="data.dateDropDownInput"
-                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"></datetimepicker>
+                <ul class="dropdown-menu" role="menu">
+                    <datetimepicker
+                        data-ng-model="data.dateDropDownInput"
+                        data-on-set-time="closeDropdown('dateDropDownInput')">
+                    </datetimepicker>
                 </ul>
             </div>
         </div>
@@ -106,17 +108,18 @@
         <div class="well">
             <p>Formatted Date: {{ data.inputOnTimeSet | date:'medium' }}</p>
 
-            <div class="dropdown">
-                <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#"
-                   href="#">
+            <div class="dropdown" data-dropdown data-is-open="dropdownStates.inputOnTimeSet">
+                <a data-dropdown-toggle role="button">
                     <div class="input-group">
                         <input type="text" class="form-control" data-ng-model="data.inputOnTimeSet">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                     </div>
                 </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker data-ng-model="data.inputOnTimeSet"
-                                    data-on-set-time="inputOnTimeSet(newDate)"></datetimepicker>
+                <ul class="dropdown-menu" role="menu">
+                    <datetimepicker
+                        data-ng-model="data.inputOnTimeSet"
+                        data-on-set-time="closeDropdown('inputOnTimeSet')">
+                    </datetimepicker>
                 </ul>
             </div>
         </div>
@@ -151,18 +154,18 @@
                     </button>
                 </p>
 
-                <div class="dropdown">
-                    <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#"
-                       href="#">
+                <div class="dropdown" data-dropdown data-is-open="dropdownStates.dateDropDownWithInput">
+                    <a data-dropdown-toggle role="button">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="formDateValue" data-ng-required="true"
-                                   data-ng-model="data.dateDropDownWithInput">
+                            <input type="text" class="form-control" name="formDateValue" data-ng-required="true" data-ng-model="data.dateDropDownWithInput">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
                     </a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <datetimepicker data-ng-model="data.dateDropDownWithInput"
-                                        data-datetimepicker-config="{ dropdownSelector: '#dropdown4' }"></datetimepicker>
+                    <ul class="dropdown-menu" role="menu">
+                        <datetimepicker
+                            data-ng-model="data.dateDropDownWithInput"
+                            data-on-set-time="closeDropdown('dateDropDownWithInput')">
+                        </datetimepicker>
                     </ul>
                 </div>
             </form>
@@ -180,14 +183,13 @@
         <div class="well">
             <p>Formatted Date: {{ data.linkCalendar | date:'medium' }}</p>
 
-            <div class="dropdown">
-                <a class="dropdown-toggle" id="dropdown5" role="button" data-toggle="dropdown" data-target="#"
-                   href="#">
-                    Click here to show calendar
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker data-ng-model="data.linkCalendar"
-                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown5' }"></datetimepicker>
+            <div class="dropdown" data-dropdown data-is-open="dropdownStates.linkCalendar">
+                <a data-dropdown-toggle role="button">Click here to show calendar</a>
+                <ul class="dropdown-menu" role="menu">
+                    <datetimepicker
+                        data-ng-model="data.linkCalendar"
+                        data-on-set-time="closeDropdown('linkCalendar')">
+                    </datetimepicker>
                 </ul>
             </div>
         </div>
@@ -203,9 +205,12 @@
         <div class="well">
             <p>Formatted Date: {{ data.checkboxCalendar | date:'medium' }}</p>
             Click me to show/hide via ng-show: <input type="checkbox" data-ng-model="data.checked"><br/>
-            <datetimepicker data-ng-model="data.checkboxCalendar" data-ng-show="data.checked"
-                            data-datetimepicker-config="{ startView: 'day', minuteStep: 15 }"
-                            data-on-set-time="checkboxOnTimeSet(newDate)"></datetimepicker>
+            <datetimepicker
+                data-ng-model="data.checkboxCalendar"
+                data-ng-show="data.checked"
+                data-datetimepicker-config="{ startView: 'day', minuteStep: 15 }"
+                data-on-set-time="checkboxOnTimeSet(newDate)">
+            </datetimepicker>
         </div>
     </div>
 
@@ -291,16 +296,15 @@
         <div class="well" data-ng-repeat = "guardian in data.guardians">
             <p>{{  guardian.name }}</p>
             <p>DOB: {{ guardian.dob | date:'yyyy-MM-dd' }} </p>
-            <div class="dropdown">
-            <a class="dropdown-toggle" id="guardian{{ $index }}" role="button" data-toggle="dropdown" data-target="#"
-               href="#">
-                Click here to show calendar
-            </a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <datetimepicker data-ng-model="guardian.dob"
-                                data-on-set-time="guardianOnSetTime($index, guardian, newDate, oldDate)"></datetimepicker>
-            </ul>
-        </div>
+            <div class="dropdown" data-dropdown data-is-open="dropdownStates['guardian' + $index]">
+                <a data-dropdown-toggle role="button">Click here to show calendar</a>
+                <ul class="dropdown-menu" role="menu">
+                    <datetimepicker
+                        data-ng-model="guardian.dob"
+                        data-on-set-time="closeDropdown('guardian' + $index)">
+                    </datetimepicker>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -311,20 +315,21 @@
         <p><code>dropdownSelector: '#dropdown6'</code> to toggle the dropdown.</p>
 
         <div class="well">
-            <p>Formatted Date: {{ data.dateDropDownInputNoFormatting | date:'medium' }}</p>
+            <p>Formatted Date: {{ data.dateDropDownRestrictedDates | date:'medium' }}</p>
 
-            <div class="dropdown">
-                <a class="dropdown-toggle" id="dropdown6" role="button" data-toggle="dropdown" data-target="#"
-                   href="#">
+            <div class="dropdown" data-dropdown data-is-open="dropdownStates.dateDropDownRestrictedDates">
+                <a data-dropdown-toggle role="button">
                     <div class="input-group">
-                        <input type="text" class="form-control" data-ng-model="data.dateDropDownInputNoFormatting">
+                        <input type="text" class="form-control" data-ng-model="data.dateDropDownRestrictedDates">
                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                     </div>
                 </a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker data-ng-model="data.dateDropDownInputNoFormatting"
-                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown6' }"
-                                    data-before-render="beforeRender($dates)"></datetimepicker>
+                    <datetimepicker
+                        data-ng-model="data.dateDropDownRestrictedDates"
+                        data-on-set-time="closeDropdown('dateDropDownRestrictedDates')"
+                        data-before-render="beforeRender($dates)">
+                    </datetimepicker>
                 </ul>
             </div>
         </div>
