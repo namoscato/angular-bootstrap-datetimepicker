@@ -225,7 +225,7 @@
               var previousViewDate = Date.utc.create(selectedDate).beginningOfYear();
               var endOfMonth = Date.utc.create(selectedDate).endOfMonth();
 
-              var startDate = Date.utc.create(startOfMonth).addDays(-1 * Math.abs(startOfMonth.getWeekday()));
+              var startDate = Date.utc.create(startOfMonth).addDays(-1 * Math.abs(startOfMonth.getWeekday() + 1));
 
               var activeDate = ngModelController.$modelValue ? Date.create(ngModelController.$modelValue).format('{year}-{Mon}-{dd}') : '';
 
